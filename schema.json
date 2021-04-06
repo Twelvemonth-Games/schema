@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "startAmount": { "type": "number" }
+  },
+  "required": ["name", "startAmount"],
+  "additionalProperties": false
+}
