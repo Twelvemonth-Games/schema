@@ -1,4 +1,5 @@
 {
   "name": "Example game",
-  "startAmount": 2000
+  "initialLoan": 2000,
+  "gameDurationDays": 364
 }
