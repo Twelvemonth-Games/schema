@@ -1,5 +1,7 @@
 {
-  "name": "Example game",
-  "initialLoan": 2000,
+  "initialLoan": {
+    "amount": 2000,
+    "interestMonthPercentage": 0
+  },
   "gameDurationDays": 364
 }
