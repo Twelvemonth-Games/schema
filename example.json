@@ -1,31 +1,45 @@
 {
   "gameDurationDays": 364,
   "initialLoan": {
-    "amount": 2000,
+    "amount": 10000,
     "interestMonthPercentage": 2
   },
   "resources": {
     "names": ["Grassland", "Grass", "Milk", "Cow"],
-    "grassland": {
-      "name": "Grassland",
-      "recipes": [
-        {
-          "name": "Grass",
-          "output": { "resource": "Grass" }
-        }
-      ]
-    },
-    "grass": {
-      "name": "Grass"
-    },
-    "milk": {
-      "name": "Milk"
-    },
-    "cow": {
-      "name": "Cow",
-      "recipes": [
-        { "name": "Milk", "input": ["Grass"], "output": { "resource": "Milk" } }
-      ]
-    }
+    "items": [
+      {
+        "name": "Grassland",
+        "unit": "Hectare",
+        "initialPurchasePrice": 62000,
+        "recipes": [
+          {
+            "name": "Grass",
+            "cycleLengthInDays": 1,
+            "output": { "resource": "Grass", "unitsPerCyclePerUnit": 28 }
+          }
+        ]
+      },
+      {
+        "name": "Grass",
+        "unit": "KG"
+      },
+      {
+        "name": "Milk",
+        "unit": "Liter"
+      },
+      {
+        "name": "Cow",
+        "unit": "Piece",
+        "initialPurchasePrice": 150,
+        "recipes": [
+          {
+            "name": "Milk",
+            "cycleLengthInDays": 1,
+            "input": [{ "resource": "Grass", "unitsPerCyclePerUnit": 60 }],
+            "output": { "resource": "Milk", "unitsPerCyclePerUnit": 25 }
+          }
+        ]
+      }
+    ]
   }
 }

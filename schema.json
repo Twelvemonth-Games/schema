@@ -24,41 +24,63 @@
           "items": {
             "type": "string"
           }
-        }
-      },
-      "patternProperties": {
-        "^(?!names).*": {
-          "type": "object",
-          "properties": {
-            "name": { "enum": { "$data": "/resources/names" } },
-            "recipes": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "input": {},
-                  "output": {
-                    "type": "object",
-                    "properties": {
-                      "resource": { "enum": { "$data": "/resources/names" } }
+        },
+        "items": {
+          "type": "array",
+          "minItems": { "$data": "/resources/names/length" },
+          "maxItems": { "$data": "/resources/names/length" },
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "enum": { "$data": "/resources/names" } },
+              "description": { "type": "string" },
+              "unit": { "type": "string" },
+              "initialPurchasePrice": { "type": "integer" },
+              "recipes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
                     },
-                    "required": ["resource"],
-                    "additionalProperties": false
-                  }
-                },
-                "required": ["name"],
-                "additionalProperties": false
+                    "cycleLengthInDays": {
+                      "type": "number"
+                    },
+                    "input": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "resource": {
+                            "enum": { "$data": "/resources/names" }
+                          },
+                          "unitsPerCyclePerUnit": { "type": "number" }
+                        },
+                        "additionalProperties": false,
+                        "required": ["resource", "unitsPerCyclePerUnit"]
+                      }
+                    },
+                    "output": {
+                      "type": "object",
+                      "properties": {
+                        "resource": { "enum": { "$data": "/resources/names" } },
+                        "unitsPerCyclePerUnit": { "type": "number" }
+                      },
+                      "required": ["resource", "unitsPerCyclePerUnit"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": ["name"],
+                  "additionalProperties": false
+                }
               }
-            }
-          },
-          "required": ["name"],
-          "additionalProperties": false
+            },
+            "required": ["name", "unit"],
+            "additionalProperties": false
+          }
         }
-      },
-      "required": ["names"]
+      }
     }
   },
   "required": ["initialLoan", "gameDurationDays", "resources"],
