@@ -16,6 +16,7 @@
       "required": ["amount", "interestMonthPercentage"]
     },
     "gameDurationDays": { "type": "integer", "maximum": 364, "minimum": 1 },
+    "currencySymbol": { "type": "string" },
     "resources": {
       "type": "object",
       "properties": {
@@ -83,6 +84,6 @@
       }
     }
   },
-  "required": ["initialLoan", "gameDurationDays", "resources"],
+  "required": ["initialLoan", "gameDurationDays", "currencySymbol", "resources"],
   "additionalProperties": false
 }

@@ -4,6 +4,7 @@
     "amount": 10000,
     "interestMonthPercentage": 2
   },
+  "currencySymbol": "€",
   "resources": {
     "names": ["Grassland", "Grass", "Milk", "Cow"],
     "items": [
