@@ -15,8 +15,52 @@
       },
       "required": ["amount", "interestMonthPercentage"]
     },
-    "gameDurationDays": { "type": "integer", "maximum": 364, "minimum": 1 }
+    "gameDurationDays": { "type": "integer", "maximum": 364, "minimum": 1 },
+    "resources": {
+      "type": "object",
+      "properties": {
+        "names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "patternProperties": {
+        "^(?!names).*": {
+          "type": "object",
+          "properties": {
+            "name": { "enum": { "$data": "/resources/names" } },
+            "recipes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "input": {},
+                  "output": {
+                    "type": "object",
+                    "properties": {
+                      "resource": { "enum": { "$data": "/resources/names" } }
+                    },
+                    "required": ["resource"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["name"],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": ["name"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["names"]
+    }
   },
-  "required": ["initialLoan", "gameDurationDays"],
+  "required": ["initialLoan", "gameDurationDays", "resources"],
   "additionalProperties": false
 }

@@ -1,7 +1,31 @@
 {
+  "gameDurationDays": 364,
   "initialLoan": {
     "amount": 2000,
-    "interestMonthPercentage": 0
+    "interestMonthPercentage": 2
   },
-  "gameDurationDays": 364
+  "resources": {
+    "names": ["Grassland", "Grass", "Milk", "Cow"],
+    "grassland": {
+      "name": "Grassland",
+      "recipes": [
+        {
+          "name": "Grass",
+          "output": { "resource": "Grass" }
+        }
+      ]
+    },
+    "grass": {
+      "name": "Grass"
+    },
+    "milk": {
+      "name": "Milk"
+    },
+    "cow": {
+      "name": "Cow",
+      "recipes": [
+        { "name": "Milk", "input": ["Grass"], "output": { "resource": "Milk" } }
+      ]
+    }
+  }
 }
